@@ -1,8 +1,8 @@
 spring:
-  datatsource:
-    url: jdbc:mysql://localhost:3306/cloud_vendor?useSSL=false
+  datasource:
+    url: jdbc:mysql://localhost:3306/cloud_vendor_db?createDatabaseIfNotExist=true&useSSL=false
     username: root
     password: root
 
 #JPA setting
-jpa.hibernate.ddl_auto: update
+  jpa.hibernate.ddl_auto: update

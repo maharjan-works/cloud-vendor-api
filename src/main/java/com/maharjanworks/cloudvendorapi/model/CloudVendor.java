@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="cloud_vender_info_tbl")
+@Table(name="cloud_vendor_info_tbl")
 public class CloudVendor {
     @Id
     private String vendorId;

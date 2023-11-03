@@ -1,3 +1,6 @@
 com\maharjanworks\cloudvendorapi\model\CloudVendor.class
+com\maharjanworks\cloudvendorapi\repository\CloudVendorRepository.class
+com\maharjanworks\cloudvendorapi\service\CloudVendorService.class
+com\maharjanworks\cloudvendorapi\service\CloudVendorServiceImpl.class
 com\maharjanworks\cloudvendorapi\CloudVendorApiApplication.class
 com\maharjanworks\cloudvendorapi\controller\CloudVendorController.class
