@@ -1,0 +1,3 @@
+com\maharjanworks\cloudvendorapi\model\CloudVendor.class
+com\maharjanworks\cloudvendorapi\CloudVendorApiApplication.class
+com\maharjanworks\cloudvendorapi\controller\CloudVendorController.class
