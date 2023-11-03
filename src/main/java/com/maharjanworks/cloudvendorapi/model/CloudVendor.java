@@ -1,6 +1,13 @@
 package com.maharjanworks.cloudvendorapi.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="cloud_vender_info_tbl")
 public class CloudVendor {
+    @Id
     private String vendorId;
     private String vendorName;
     private String vendorAddress;
