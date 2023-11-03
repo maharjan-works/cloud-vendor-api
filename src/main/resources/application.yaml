@@ -4,5 +4,11 @@ spring:
     username: root
     password: root
 
+# The SQL dialect makes Hibernate generate better SQL for the chosen database
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+
 #JPA setting
   jpa.hibernate.ddl_auto: update
