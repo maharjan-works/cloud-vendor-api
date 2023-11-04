@@ -1,5 +1,6 @@
 package com.maharjanworks.cloudvendorapi.service;
 
+import com.maharjanworks.cloudvendorapi.exception.CloudVendorNotFoundException;
 import com.maharjanworks.cloudvendorapi.model.CloudVendor;
 import com.maharjanworks.cloudvendorapi.repository.CloudVendorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,15 +28,22 @@ public class CloudVendorServiceImpl implements CloudVendorService {
 
     @Override
     public String deleteCloudVendor(String vendorId) {
-        this.cloudVendorRepository.deleteById(vendorId);
-        return "Cloud Vendor Details with Id: " + vendorId + " Deleted Successfully.";
+        if (this.cloudVendorRepository.findById(vendorId).isPresent()){
+            this.cloudVendorRepository.deleteById(vendorId);
+            return "Cloud Vendor Details with Id: " + vendorId + " Deleted Successfully.";
+        }else{
+            throw new CloudVendorNotFoundException("Requested Cloud Vendor does not exist");
+        }
     }
 
     @Override
     public CloudVendor getCloudVendor(String vendorId) {
         //Optional<CloudVendor> opt = this.cloudVendorRepository.findById(vendorId);
         //return (opt.isPresent())?opt.get():null;
-        return this.cloudVendorRepository.findById(vendorId).get();
+
+        if (this.cloudVendorRepository.findById(vendorId).isPresent())
+            return this.cloudVendorRepository.findById(vendorId).get();
+        throw new CloudVendorNotFoundException("Requested Cloud Vendor does not exist.");
     }
 
     @Override
