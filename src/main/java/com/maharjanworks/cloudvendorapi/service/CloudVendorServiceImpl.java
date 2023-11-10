@@ -30,7 +30,7 @@ public class CloudVendorServiceImpl implements CloudVendorService {
     public String deleteCloudVendor(String vendorId) {
         if (this.cloudVendorRepository.findById(vendorId).isPresent()){
             this.cloudVendorRepository.deleteById(vendorId);
-            return "Cloud Vendor Details with Id: " + vendorId + " Deleted Successfully.";
+            return "Cloud Vendor Details with ID: " + vendorId + " Deleted Successfully.";
         }else{
             throw new CloudVendorNotFoundException("Requested Cloud Vendor does not exist");
         }
@@ -41,9 +41,13 @@ public class CloudVendorServiceImpl implements CloudVendorService {
         //Optional<CloudVendor> opt = this.cloudVendorRepository.findById(vendorId);
         //return (opt.isPresent())?opt.get():null;
 
-        if (this.cloudVendorRepository.findById(vendorId).isPresent())
-            return this.cloudVendorRepository.findById(vendorId).get();
-        throw new CloudVendorNotFoundException("Requested Cloud Vendor does not exist.");
+        if (this.cloudVendorRepository.findById(vendorId).isEmpty())
+            throw new CloudVendorNotFoundException("Request Cloud Vendor DOES NOT exists.");
+        return this.cloudVendorRepository.findById(vendorId).get();
+
+//        if (this.cloudVendorRepository.findById(vendorId).isPresent())
+//            return this.cloudVendorRepository.findById(vendorId).get();
+//        throw new CloudVendorNotFoundException("Requested Cloud Vendor does not exist.");
     }
 
     @Override
