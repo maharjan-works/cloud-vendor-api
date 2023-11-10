@@ -2,7 +2,6 @@ package com.maharjanworks.cloudvendorapi.exception;
 
 public class CloudVendorNotFoundException extends RuntimeException{
 
-
     public CloudVendorNotFoundException(String message) {
         super(message);
     }

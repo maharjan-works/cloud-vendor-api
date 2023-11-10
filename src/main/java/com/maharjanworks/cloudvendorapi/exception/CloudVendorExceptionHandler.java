@@ -17,7 +17,5 @@ public class CloudVendorExceptionHandler {
                 HttpStatus.NOT_FOUND
         );
         return new ResponseEntity<>(cloudVendorException,HttpStatus.NOT_FOUND);
-
-
     }
 }
