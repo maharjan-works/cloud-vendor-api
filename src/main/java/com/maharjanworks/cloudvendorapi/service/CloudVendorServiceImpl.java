@@ -44,10 +44,6 @@ public class CloudVendorServiceImpl implements CloudVendorService {
         if (this.cloudVendorRepository.findById(vendorId).isEmpty())
             throw new CloudVendorNotFoundException("Request Cloud Vendor DOES NOT exists.");
         return this.cloudVendorRepository.findById(vendorId).get();
-
-//        if (this.cloudVendorRepository.findById(vendorId).isPresent())
-//            return this.cloudVendorRepository.findById(vendorId).get();
-//        throw new CloudVendorNotFoundException("Requested Cloud Vendor does not exist.");
     }
 
     @Override
