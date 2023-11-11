@@ -1,8 +1,11 @@
 package com.maharjanworks.cloudvendorapi.controller;
 
 import com.maharjanworks.cloudvendorapi.model.CloudVendor;
+import com.maharjanworks.cloudvendorapi.response.ResponseHandler;
 import com.maharjanworks.cloudvendorapi.service.CloudVendorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,8 +19,8 @@ public class CloudVendorController {
 
 
     @GetMapping("{vendorId}")
-    public CloudVendor getCloudVendorDetails(@PathVariable("vendorId") String vendorId) {
-        return this.cloudVendorService.getCloudVendor(vendorId);
+    public ResponseEntity<Object> getCloudVendorDetails(@PathVariable("vendorId") String vendorId) {
+      return  ResponseHandler.responseBuilder("Cloud Vendor Found",HttpStatus.FOUND,this.cloudVendorService.getCloudVendor(vendorId));
     }
 
     @GetMapping
