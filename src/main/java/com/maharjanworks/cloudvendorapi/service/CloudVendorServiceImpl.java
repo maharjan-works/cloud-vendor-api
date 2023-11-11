@@ -28,12 +28,10 @@ public class CloudVendorServiceImpl implements CloudVendorService {
 
     @Override
     public String deleteCloudVendor(String vendorId) {
-        if (this.cloudVendorRepository.findById(vendorId).isPresent()){
-            this.cloudVendorRepository.deleteById(vendorId);
-            return "Cloud Vendor Details with ID: " + vendorId + " Deleted Successfully.";
-        }else{
+        if (this.cloudVendorRepository.findById(vendorId).isEmpty())
             throw new CloudVendorNotFoundException("Requested Cloud Vendor does not exist");
-        }
+        this.cloudVendorRepository.deleteById(vendorId);
+        return "Cloud Vendor Details with ID: " + vendorId + " Deleted Successfully.";
     }
 
     @Override
