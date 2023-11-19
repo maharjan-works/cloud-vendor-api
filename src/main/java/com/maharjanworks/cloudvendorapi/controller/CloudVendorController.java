@@ -17,10 +17,9 @@ public class CloudVendorController {
     @Autowired
     private CloudVendorService cloudVendorService;
 
-
     @GetMapping("/{vendorId}")
     public ResponseEntity<Object> getCloudVendorDetails(@PathVariable("vendorId") String vendorId) {
-      return  ResponseHandler.responseBuilder("Cloud Vendor Found",HttpStatus.FOUND,this.cloudVendorService.getCloudVendor(vendorId));
+      return  ResponseHandler.responseBuilder("Cloud Vendor Found",HttpStatus.OK,this.cloudVendorService.getCloudVendor(vendorId));
     }
 
     @GetMapping
@@ -35,7 +34,8 @@ public class CloudVendorController {
 
     @PutMapping
     public String updateCloudVendorDetails(@RequestBody CloudVendor cloudVendor) {
-        return this.cloudVendorService.updateCloudVendor(cloudVendor);
+         this.cloudVendorService.updateCloudVendor(cloudVendor);
+         return "Cloud Vendor updated successfully.";
     }
 
     @DeleteMapping("/{vendorId}")
