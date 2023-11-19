@@ -18,7 +18,7 @@ public class CloudVendorController {
     private CloudVendorService cloudVendorService;
 
 
-    @GetMapping("{vendorId}")
+    @GetMapping("/{vendorId}")
     public ResponseEntity<Object> getCloudVendorDetails(@PathVariable("vendorId") String vendorId) {
       return  ResponseHandler.responseBuilder("Cloud Vendor Found",HttpStatus.FOUND,this.cloudVendorService.getCloudVendor(vendorId));
     }
@@ -38,8 +38,13 @@ public class CloudVendorController {
         return this.cloudVendorService.updateCloudVendor(cloudVendor);
     }
 
-    @DeleteMapping("{vendorId}")
+    @DeleteMapping("/{vendorId}")
     public String deleteCloudVendorDetails(@PathVariable("vendorId") String vendorId) {
         return this.cloudVendorService.deleteCloudVendor(vendorId);
     }
+
+//    @GetMapping("{vendorName}")
+//    public List<CloudVendor> getCloudVendorsByName(@PathVariable("vendorName") String vendorName){
+//        return this.cloudVendorService.findByVendorName(vendorName);
+//    }
 }
