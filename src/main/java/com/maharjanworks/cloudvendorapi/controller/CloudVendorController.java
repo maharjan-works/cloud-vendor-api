@@ -3,6 +3,7 @@ package com.maharjanworks.cloudvendorapi.controller;
 import com.maharjanworks.cloudvendorapi.model.CloudVendor;
 import com.maharjanworks.cloudvendorapi.response.ResponseHandler;
 import com.maharjanworks.cloudvendorapi.service.CloudVendorService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,13 +12,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/cloudvendor")
+@RequestMapping("/cloudvendor/")
 public class CloudVendorController {
 
     @Autowired
     private CloudVendorService cloudVendorService;
 
-    @GetMapping("/{vendorId}")
+    @GetMapping("{vendorId}")
+    @ApiOperation(value = "cloud vendor id", notes = "Provide cloud vendor details", response = ResponseEntity.class)
     public ResponseEntity<Object> getCloudVendorDetails(@PathVariable("vendorId") String vendorId) {
       return  ResponseHandler.responseBuilder("Cloud Vendor Found",HttpStatus.OK,this.cloudVendorService.getCloudVendor(vendorId));
     }
@@ -38,7 +40,7 @@ public class CloudVendorController {
          return "Cloud Vendor updated successfully.";
     }
 
-    @DeleteMapping("/{vendorId}")
+    @DeleteMapping("{vendorId}")
     public String deleteCloudVendorDetails(@PathVariable("vendorId") String vendorId) {
         return this.cloudVendorService.deleteCloudVendor(vendorId);
     }
