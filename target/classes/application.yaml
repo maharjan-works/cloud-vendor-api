@@ -18,3 +18,14 @@ spring:
     hibernate:
       ddl_auto: update
     show: true
+
+# managing actuator endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health, beans, metrics, loggers"
+      base-path: "/management-dashboard"
+  endpoint:
+    health:
+      show-details: always
